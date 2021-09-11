@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Plesase fill a valid email address'],
         required: 'Email is required'
     },
+    educator: {
+        type: Boolean,
+        default: false
+    },
     created: {
         type: Date,
         default: Date.now

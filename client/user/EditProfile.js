@@ -72,7 +72,8 @@ export default function EditProfile({ match }) {
     const user = {
       name: values.name || undefined,
       email: values.email || undefined,
-      password: values.password || undefined
+      password: values.password || undefined,
+      educator: values.educator || undefined
     }
     update({
       userId: match.params.userId
@@ -82,12 +83,18 @@ export default function EditProfile({ match }) {
       if (data && data.error) {
         setValues({...values, error: data.error})
       } else {
+        auth.updateUser(data, () => {
         setValues({...values, userId: data._id, redirectToProfile: true})
+        })
       }
     })
   }
   const handleChange = name => event => {
     setValues({...values, [name]: event.target.value})
+  }
+
+  const handleCheck = (event, checked) => {
+    setValues({...values, 'educator': checked})
   }
 
     if (values.redirectToProfile) {
@@ -102,6 +109,23 @@ export default function EditProfile({ match }) {
           <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
           <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
           <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
+          <br />
+          <Typography variant="subtitle1" className={classes.subheading}>
+            I am an Educator
+          </Typography>
+          <FormControlLabel
+            control={
+              <Switch 
+                classes={{
+                  checked: classes.checked,
+                  bar: classes.bar
+                }}
+                checked={values.educator}
+                onChange={handleCheck}
+              />
+            }
+            label={values.educator? 'Yes' : 'No'}
+          />
           <br/> {
             values.error && (<Typography component="p" color="error">
               <Icon color="error" className={classes.error}>error</Icon>
