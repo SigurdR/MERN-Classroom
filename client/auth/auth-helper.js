@@ -29,12 +29,12 @@ const auth = {
   },
   updateUser(user, cb) {
     if (typeof window !== "undefined") {
-      if (sessionStorage.getItem('jwt') {
+      if (sessionStorage.getItem('jwt')) {
         let auth = JSON.parse(sessionStorage.getItem('jwt'))
         auth.user = user
         sessionStorage.setItem('jwt', JSON.stringify(auth))
         cb()
-      })
+      }
     }
   }
 }

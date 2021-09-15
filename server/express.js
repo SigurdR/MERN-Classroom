@@ -13,6 +13,7 @@ import helmet from 'helmet';
 import Template from './../template';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
+import courseRoutes from './routes/course.routes';
 import devBundle from './devBundle'; // need to comment out this line for production
 import path from 'path';
 
@@ -29,6 +30,7 @@ app.use(helmet());
 app.use(cors());
 app.use('/', userRoutes);
 app.use('/', authRoutes);
+app.use('/', courseRoutes);
 
 app.get('*', (req, res) => {
     // generation CSS Style

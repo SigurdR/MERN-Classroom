@@ -15,7 +15,7 @@ const signin = async (req, res) => {
             return res.status('401').send({ error: "Email and password don't match." })
         }
 
-        const token = jwt.sign({ __id: user.__id }, config.jwtSecret)
+        const token = jwt.sign({ _id: user._id }, config.jwtSecret)
 
         res.cookie('t', token, { expire: new Date() + 9999 })
 
