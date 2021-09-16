@@ -29,6 +29,9 @@ router.route('/api/courses/:courseId')
 router.route('/api/courses/:courseId/lesson/new')
     .put(authCtrl.requireSignin, courseCtrl.isInstructor, courseCtrl.newLesson)
 
+router.route('/api/courses/published')
+    .get(courseCtrl.listPublished)
+
 router.param('courseId', courseCtrl.courseByID)
 router.param('userId', userCtrl.userByID)
 

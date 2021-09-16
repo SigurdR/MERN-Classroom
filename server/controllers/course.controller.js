@@ -84,7 +84,6 @@ const newLesson = async (req, res) => {
             .populate('instructor', '_id name')
             .exec()
         res.json(result)
-        )
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
@@ -134,6 +133,17 @@ const remove = async (req, res) => {
     }
 }
 
+const listPublished = (req, res) => {
+    Course.find({published: true}, (err, courses) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        }
+        res.json(courses)
+    }).populate('instructor', '_id name')
+}
+
 export default {
     create,
     listByInstructor,
@@ -142,5 +152,6 @@ export default {
     isInstructor,
     newLesson,
     update,
-    remove
+    remove,
+    listPublished
 }
