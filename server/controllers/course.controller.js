@@ -144,6 +144,18 @@ const listPublished = (req, res) => {
     }).populate('instructor', '_id name')
 }
 
+const photo = (req, res, next) => {
+    if (req.course.image.data) {
+        res.set("Content-Type", req.course.image.contentType)
+        return res.send(req.course.image.data)
+    }
+    next()
+}
+
+const defaultPhoto = (req, res) => {
+    return res.sendFile(process.cwd()+defaultImage)
+}
+
 export default {
     create,
     listByInstructor,
@@ -153,5 +165,7 @@ export default {
     newLesson,
     update,
     remove,
-    listPublished
+    listPublished,
+    photo,
+    defaultPhoto
 }

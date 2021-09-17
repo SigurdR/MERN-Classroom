@@ -87,4 +87,4 @@ const isEducator = (req, res, next) => {
 }
 
 
-export default { create, userByID, read, list, remove, update }
+export default { create, userByID, read, list, remove, update, isEducator }

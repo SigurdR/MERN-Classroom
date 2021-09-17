@@ -17,7 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import {read, update} from './api-course.js'
 import {Link, Redirect} from 'react-router-dom'
 import auth from './../auth/auth-helper'
-import DeleteCourse from '/DeleteCourse'
+import DeleteCourse from './DeleteCourse'
 import Divider from '@material-ui/core/Divider'
 import NewLesson from './NewLesson'
 import Dialog from '@material-ui/core/Dialog'
@@ -180,17 +180,20 @@ export default function Course ({match}) {
                     title={course.name}
                     subheader={
                         <div>
-                            <Link to={"/user/" + course.instructor._id}>
+                            <Link to={
+                                "/user/" + course.instructor._id}
+                                className={classes.sub}
+                            >
                                 By {course.instructor.name}
                             </Link>
-                            <span>{course.category}</span>
+                            <span className={classes.category}>{course.category}</span>
                         </div>
                     }
                     action={<>
                         {auth.isAuthenticated().user && auth.isAuthenticated().user._id == course.instructor._id &&
                             (
                                 <span>
-                                    <Link to={"/teach/course/edit/" + course._id>}>
+                                    <Link to={"/teach/course/edit/" + course._id}>
                                         <IconButton aria-label="Edit" color="secondary">
                                             <Edit />
                                         </IconButton>

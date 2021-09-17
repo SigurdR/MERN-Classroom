@@ -50,7 +50,7 @@ export default function MyCourses(){
     const jwt = auth.isAuthenticated()
 
     useEffect(() => {
-        const abortController = new abortController()
+        const abortController = new AbortController()
         const signal = abortController.signal
         listByInstructor({
             userId: jwt.user._id

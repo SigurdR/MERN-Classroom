@@ -1,6 +1,6 @@
 const create = async (user) => {
     try {
-        let response = await fetch('/api/users', {
+        let response = await fetch('/api/users/', {
             method: 'POST',
             headers: {
                 'Accept': 'appliation/json',
@@ -16,7 +16,7 @@ const create = async (user) => {
 
 const list = async (signal) => {
     try {
-        let response = await fetch('/api/users', {
+        let response = await fetch('/api/users/', {
             method: 'GET',
             signal: signal,
         })
@@ -62,7 +62,7 @@ const update = async (params, credentials, user) => {
 
 const remove = async (params, credentials) => {
     try {
-        let response = await fetch('/api/users' + params.userId, {
+        let response = await fetch('/api/users/' + params.userId, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

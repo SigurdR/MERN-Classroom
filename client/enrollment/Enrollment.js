@@ -22,7 +22,7 @@ import Drawer from '@material-ui/core/Drawer'
 import Info from '@material-ui/icons/Info'
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
-import {CardContent} from '@material-ui/core/CardContent'
+import { CardContent } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     root: theme.mixins.gutters({
@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     },
     progress: {
         textAlign: 'center',
-        color: '#dfdfdf'
+        color: '#dfdfdf',
         '& span': {
             color: '#fffde7',
             fontSize: '1.15em'

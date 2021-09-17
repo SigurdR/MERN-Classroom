@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 import { makeStyles } from '@material-ui/core/styles'
 import auth from './../auth/auth-helper'
 import {read, update} from './api-user.js'
@@ -45,7 +47,8 @@ export default function EditProfile({ match }) {
     email: '',
     open: false,
     error: '',
-    redirectToProfile: false
+    redirectToProfile: false,
+    educator: false
   })
   const jwt = auth.isAuthenticated()
 
@@ -59,7 +62,7 @@ export default function EditProfile({ match }) {
       if (data && data.error) {
         setValues({...values, error: data.error})
       } else {
-        setValues({...values, name: data.name, email: data.email})
+        setValues({...values, name: data.name, email: data.email, educator: data.educator})
       }
     })
     return function cleanup(){
@@ -73,7 +76,7 @@ export default function EditProfile({ match }) {
       name: values.name || undefined,
       email: values.email || undefined,
       password: values.password || undefined,
-      educator: values.educator || undefined
+      educator: values.educator
     }
     update({
       userId: match.params.userId
@@ -94,7 +97,7 @@ export default function EditProfile({ match }) {
   }
 
   const handleCheck = (event, checked) => {
-    setValues({...values, 'educator': checked})
+    setValues({...values, educator: checked})
   }
 
     if (values.redirectToProfile) {
@@ -115,10 +118,9 @@ export default function EditProfile({ match }) {
           </Typography>
           <FormControlLabel
             control={
-              <Switch 
-                classes={{
-                  checked: classes.checked,
-                  bar: classes.bar
+              <Switch classes={{
+                    checked: classes.checked,
+                    bar: classes.bar
                 }}
                 checked={values.educator}
                 onChange={handleCheck}

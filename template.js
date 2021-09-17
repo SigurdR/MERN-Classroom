@@ -9,7 +9,7 @@ export default ({markup, css}) => {
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
                 >
-                <title>MERN Skeleton</title>
+                <title>MERN Classroom</title>
                 <link rel="stylesheet"
                     href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
                 <link rel="stylesheet" 

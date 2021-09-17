@@ -46,7 +46,7 @@ const read = async (params, signal) => {
 
 const update = async (params, credentials, course) => {
     try {
-        let response = await fetch('/api/courses' + params.courseId, {
+        let response = await fetch('/api/courses/' + params.courseId, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

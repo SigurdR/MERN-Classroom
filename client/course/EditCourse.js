@@ -263,7 +263,7 @@ export default function EditCourse ({match}) {
                                                     </IconButton>
                                                 }
                                             </>
-                                        </ListitemAvatar>
+                                        </ListItemAvatar>
                                         <ListItemText 
                                             primary={
                                                 <>

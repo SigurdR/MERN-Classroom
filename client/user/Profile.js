@@ -59,6 +59,7 @@ export default function Profile({ match }) {
     if (redirectToSignin) {
       return <Redirect to='/signin'/>
     }
+
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography variant="h6" className={classes.title}>

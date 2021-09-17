@@ -11,7 +11,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import {newLesson} from './api-course'
 import auth from './../auth/auth-helper'
 
-counst useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
     form: {
         minWidth: 500
     }

@@ -103,7 +103,7 @@ export default function Home(){
   }, [])
     return (
         <div className={classes.extraTop}>
-          {auth.isAuthenticated().use && (
+          {auth.isAuthenticated().user && (
             <Card className={`${classes.card} ${classes.enrolledCard}`}>
               <Typography variant="h6" component="h2" className={classes.enrolledTitle}>
                 Courses your are enrolled in

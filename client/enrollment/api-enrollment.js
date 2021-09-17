@@ -16,7 +16,7 @@ const create = async (params, credentials) => {
 
 const listEnrolled = async (credentials, signal) => {
     try {
-        let response = await fetch('/api/enrollment/enrolled', {
+        let response = await fetch('/api/enrollment/enrolled/', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
