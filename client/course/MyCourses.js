@@ -88,7 +88,7 @@ export default function MyCourses(){
                         return <Link to={"/teach/course/" + course._id} key={i}>
                             <ListItem button>
                                 <ListItemAvatar>
-                                    <Avatar src={'/api/courses/photo' + course._id + "?" + new Data().getTime()} className={classes.avatar}/>
+                                    <Avatar src={'/api/courses/photo/' + course._id + "?" + new Date().getTime()} className={classes.avatar}/>
                                 </ListItemAvatar>
                                 <ListItemText primary={course.name} secondary={course.description} className={classes.listText}/>
                             </ListItem>

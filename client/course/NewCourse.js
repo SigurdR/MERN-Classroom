@@ -67,11 +67,11 @@ export default function NewCourse() {
         values.name && courseData.append('name', values.name)
         values.description && courseData.append('description', values.description)
         values.image && courseData.append('image', values.image)
-        values.category && courseData.append('categor', values.category)
+        values.category && courseData.append('category', values.category)
         create({
             userId: jwt.user._id
         }, {
-            t: jwt.toke
+            t: jwt.token
         }, courseData).then((data) => {
             if (data.error) {
                 setValues({...values, error: data.error})

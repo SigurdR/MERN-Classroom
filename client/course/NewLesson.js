@@ -73,6 +73,15 @@ export default function NewLesson(props) {
                     </DialogTitle>
                     <DialogContent>
                         <TextField 
+                            margin="dense"
+                            label="Title"
+                            type="text"
+                            fullWidth
+                            value={values.title} 
+                            onChange={handleChange('title')}
+                        />
+                        <br />
+                        <TextField 
                             label="content"
                             type ="text"
                             multiline
@@ -93,6 +102,9 @@ export default function NewLesson(props) {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary" variant="contained">
+                            Cancel
+                        </Button>
+                        <Button onClick={clickSubmit} color="secondary" variant="contained">
                             Add
                         </Button>
                     </DialogActions>

@@ -15,6 +15,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import ListItemText from '@material-ui/core/ListItemText'
 import {read, update} from './api-course.js'
+import {enrollmentStats} from './../enrollment/api-enrollment'
 import {Link, Redirect} from 'react-router-dom'
 import auth from './../auth/auth-helper'
 import DeleteCourse from './DeleteCourse'
@@ -26,7 +27,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Enroll from './../enrollment/Enroll'
 
-const userStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
     root: theme.mixins.gutters({
         maxWidth: 800,
         margin: 'auto',
@@ -42,7 +43,7 @@ const userStyles = makeStyles(theme => ({
     },
     subheading: {
         margin: '10px',
-        color: heme.palette.openTitle
+        color: theme.palette.openTitle
     },
     details: {
         margin: '16px'
@@ -92,7 +93,7 @@ const userStyles = makeStyles(theme => ({
 export default function Course ({match}) {
     const classes = useStyles()
     const [stats, setStats] = useState({})
-    const [course, setCourse] = useState({instruction:{}})
+    const [course, setCourse] = useState({instructor:{}})
     const [values, setValues] = useState({
         redirect: false,
         error: ''

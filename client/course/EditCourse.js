@@ -84,7 +84,7 @@ export default function EditCourse ({match}) {
     const classes = useStyles()
     const [course, setCourse] = useState({
         name: '',
-        descroption: '',
+        description: '',
         image: '',
         category: '',
         instructor: {},
@@ -97,7 +97,7 @@ export default function EditCourse ({match}) {
     })
 
     useEffect(() => {
-        const abortController = new abortController()
+        const abortController = new AbortController()
         const signal = abortController.signal
         
         read({courseId: match.params.courseId}, signal).then((data) => {
@@ -221,7 +221,7 @@ export default function EditCourse ({match}) {
                             value={course.description}
                             onChange={handleChange('description')}
                         /><br /><br />
-                        <input accept="image/*" onChange={handleChange(image)} className={classes.input} id="icon-button-file" type="file" />
+                        <input accept="image/*" onChange={handleChange('image')} className={classes.input} id="icon-button-file" type="file" />
                         <label htmlFor="icon-button-file">
                             <Button variant="outlined" color="secondary" component="span">
                                 Change photo
@@ -248,7 +248,7 @@ export default function EditCourse ({match}) {
                         }
                     />
                     <List>
-                        {ccourse.lessons && course.lessons.map((lesson, index) => {
+                        {course.lessons && course.lessons.map((lesson, index) => {
                             return (
                                 <span key={index}>
                                     <ListItem className={classes.list}>

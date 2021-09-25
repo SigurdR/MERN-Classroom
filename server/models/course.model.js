@@ -23,7 +23,7 @@ const CourseSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: 'Category is reqired'
+        required: 'Category is required'
     },
     updated: Date,
     created: {
