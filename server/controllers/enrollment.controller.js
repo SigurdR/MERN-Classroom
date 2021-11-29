@@ -23,7 +23,7 @@ const create = async (req, res) => {
 const enrollmentByID = async (req, res, next, id) => {
     try {
         let enrollment = await Enrollment.findById(id)
-            .populate({path: 'course', pupulate: {path: 'instructorr'}})
+            .populate({path: 'course', pupulate: {path: 'instructor'}})
             .populate('student', '_id name')
         if (!enrollment)
             return res.status('400').json({
@@ -44,7 +44,7 @@ const read = (req, res) => {
 
 const complete = async (req, res) => {
     let updatedData = {}
-    updateData['lessonStatus.$.complete'] = req.body.complete
+    updatedData['lessonStatus.$.complete'] = req.body.complete
     updatedData.updated = Date.now()
     if(req.body.courseCompleted)
         updatedData.completed = req.body.courseCompleted
@@ -83,7 +83,9 @@ const isStudent = (req, res, next) => {
 
 const listEnrolled = async (req, res) => {
     try {
-        let enrollments = await Enrollment.find({student: req.auth._id}).sort({'completed': 1}).populate('course', '_id name category')
+        let enrollments = await Enrollment.find({student: req.auth._id})
+                                            .sort({'completed': 1})
+                                            .populate('course', '_id name category')
         res.json(enrollments)
     } catch(err) {
         console.log(err)

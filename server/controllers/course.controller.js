@@ -105,7 +105,7 @@ const update = (req, res) => {
         if (fields.lessons) {
             course.lessons = JSON.parse(fields.lessons)
         }
-        course.updated = Data.now()
+        course.updated = Date.now()
         if (files.image) {
             course.image.data = fs.readFileSync(files.image.path)
             course.image.contentType = files.image.type

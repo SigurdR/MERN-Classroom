@@ -30,7 +30,10 @@ const CourseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    instructor: {type: mongoose.Schema.ObjectId, ref: 'User'},
+    instructor: {
+        type: mongoose.Schema.ObjectId, 
+        ref: 'User'
+    },
     published: {
         type: Boolean,
         default: false

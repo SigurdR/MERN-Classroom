@@ -23,9 +23,9 @@ export default function Enroll(props) {
     const clickEnroll = () => {
         create({
             courseId: props.courseId
-        }, {t: jwt.toke}).then((data) => {
+        }, {t: jwt.token}).then((data) => {
             if (data && data.error) {
-                setValues({...values, error: datta.error})
+                setValues({...values, error: data.error})
             } else {
                 setValues({...values, enrollmentId: data._id, redirect: true})
             }

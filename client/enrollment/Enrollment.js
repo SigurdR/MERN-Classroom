@@ -127,6 +127,7 @@ export default function Enrollment ({match}) {
         lessonStatus: []
     })
     const [values, setValues] = useState({
+        redirect: false,
         error: '',
         drawer: -1
     })
@@ -140,7 +141,7 @@ export default function Enrollment ({match}) {
             if (data.error) {
                 setValues({...values, error: data.error})
             } else {
-                totalComplete(data.lessonStatus)
+                totalCompleted(data.lessonStatus)
                 setEnrollment(data)
             }
         })
@@ -186,7 +187,7 @@ export default function Enrollment ({match}) {
     }
 
     const imageUrl = enrollment.course._id
-        ? `/api/courses/photo/${enrollment.course._id}?${new Data().getTime()}`
+        ? `/api/courses/photo/${enrollment.course._id}?${new Date().getTime()}`
         : '/api/courses/defaultphoto'
     
     return (

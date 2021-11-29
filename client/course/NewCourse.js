@@ -57,7 +57,7 @@ export default function NewCourse() {
     const jwt = auth.isAuthenticated()
 
     const handleChange = name => event => {
-        const value = name == 'image'
+        const value = name === 'image'
             ? event.target.files[0]
             : event.target.value
         setValues({...values, [name]: value })
